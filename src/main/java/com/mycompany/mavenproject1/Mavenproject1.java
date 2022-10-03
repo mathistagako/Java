@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Mavenproject1 {
     
     static ArrayList<Studente> studentsList = new ArrayList<Studente>();
+    static Scanner scanner = new Scanner(System.in);
     
     public ArrayList<Studente> searchName(String input){
         
@@ -35,7 +36,6 @@ public class Mavenproject1 {
     
     public void avvia(){
         Mavenproject1 p = new Mavenproject1();
-        Scanner scanner = new Scanner(System.in);
         
         ArrayList<Studente> studentsFound = new ArrayList<Studente>();
         
