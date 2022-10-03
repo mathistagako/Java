@@ -53,7 +53,9 @@ public class Mavenproject1 {
     public static void main(String[] args) {
         
         Mavenproject1 p = new Mavenproject1();
-        p.avvia();
+        //p.avvia();
+        InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico();
+        n.setVisible(true);
         
     }
 }
