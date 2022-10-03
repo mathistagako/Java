@@ -13,7 +13,9 @@ import java.util.Scanner;
  */
 public class Mavenproject1 {
     
-    public ArrayList<Studente> searchName(ArrayList<Studente> studentsList, String input){
+    static ArrayList<Studente> studentsList = new ArrayList<Studente>();
+    
+    public ArrayList<Studente> searchName(String input){
         
         Boolean studentFound = false;
         ArrayList<Studente> studentsFound = new ArrayList<Studente>();
@@ -34,7 +36,7 @@ public class Mavenproject1 {
     public void avvia(){
         Mavenproject1 p = new Mavenproject1();
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Studente> studentsList = new ArrayList<Studente>();
+        
         ArrayList<Studente> studentsFound = new ArrayList<Studente>();
         
         studentsList.add( new Studente("34085","Mathis", "Tagako") );
@@ -45,7 +47,7 @@ public class Mavenproject1 {
         System.out.println("Inserisci il nome di uno studente");
         String inputStudentName = scanner.nextLine();
         
-        studentsFound = p.searchName(studentsList, inputStudentName);
+        studentsFound = p.searchName(inputStudentName);
     }
 
     public static void main(String[] args) {
