@@ -180,13 +180,16 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
         // TODO add your handling code here:
         String str = jTextField1.getText();
         
-    ArrayList<Studente> studentsFound = new ArrayList<Studente>();
-    
-    studentsFound = p.searchName(str);
-    
-    for(int i = 0;i<studentsFound.size();i++){
-            jTextArea1.setText(jTextArea1.getText() + studentsFound.get(i).getNome() +" "+ studentsFound.get(i).getCognome()+ "\n");
-       }
+        ArrayList<Studente> studentsFound = new ArrayList<Studente>();
+
+        studentsFound = p.searchName(str);
+        if(studentsFound.size()>0){
+        for(int i = 0;i<studentsFound.size();i++){
+                jTextArea1.setText(jTextArea1.getText() + studentsFound.get(i).getNome() +" "+ studentsFound.get(i).getCognome()+ "\n");
+           }
+        }else{
+            jTextArea1.setText("Studente non trovato");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked

@@ -5,7 +5,6 @@
 
 package com.mycompany.mavenproject1;
 import java.util.ArrayList;
-import java.util.Scanner; 
 
 /**
  *
@@ -14,7 +13,6 @@ import java.util.Scanner;
 public class Mavenproject1 {
     
     static ArrayList<Studente> studentsList = new ArrayList<Studente>();
-    static Scanner scanner = new Scanner(System.in);
     
     public ArrayList<Studente> searchName(String input){
         
