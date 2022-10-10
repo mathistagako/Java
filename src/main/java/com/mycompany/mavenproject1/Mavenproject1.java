@@ -35,26 +35,18 @@ public class Mavenproject1 {
     }
     
     public void avvia(){
-        Mavenproject1 p = new Mavenproject1();
-        
-        ArrayList<Studente> studentsFound = new ArrayList<Studente>();
         
         studentsList.add( new Studente("34085","Mathis", "Tagako") );
         studentsList.add( new Studente("34010","Carlo", "Macinati") );
         studentsList.add( new Studente("34056","Joel", "Embiid") );
         studentsList.add( new Studente("34000","Carlo", "Devastati") );
-
-        System.out.println("Inserisci il nome di uno studente");
-        String inputStudentName = scanner.nextLine();
-        
-        studentsFound = p.searchName(inputStudentName);
-    }
+        }
 
     public static void main(String[] args) {
         
         Mavenproject1 p = new Mavenproject1();
-        //p.avvia();
-        InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico();
+        p.avvia();
+        InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
         n.setVisible(true);
         
     }
