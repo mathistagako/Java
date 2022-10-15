@@ -32,15 +32,26 @@ public class Mavenproject1 {
         return studentsFound;
     }
     
-    public void initializeSubjects(){
+    public void initializeDays(){
         
-        Materia [] materie = new Materia[5];
+        Materia [] Lunedi = new Materia[5];
         
-        materie[0] = new Materia("Matematica",4);
-        materie[1] = new Materia("Matematica",3);
-        materie[2] = new Materia("GPO",3);
-        materie[3] = new Materia("Matematica",5);
-        materie[4] = new Materia("TPS",3);
+        Lunedi[0] = new Materia("Matematica",4);
+        Lunedi[1] = new Materia("Informatica",3);
+        Lunedi[2] = new Materia("GPO",3);
+        Lunedi[3] = new Materia("Inglese",3);
+        Lunedi[4] = new Materia("TPS",3);
+        
+        System.out.print("Lunedi: ");
+        
+        for(int i = 0;i<Lunedi.length;i++){
+            System.out.print(Lunedi[i].getNome());
+            if(i<Lunedi.length-1){
+                System.out.print(", ");
+            }else{
+                System.out.println("");
+            }
+        }
         
     }
     
@@ -55,10 +66,10 @@ public class Mavenproject1 {
     public static void main(String[] args) {
         
         Mavenproject1 p = new Mavenproject1();
-        p.initializeSubjects(); //Inizializza le materie
+        p.initializeDays(); //Inizializza le materie
         p.avvia();  //Inizializza gli studenti
-        InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
-        n.setVisible(true);
+        //InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
+        //n.setVisible(true);
         
     }
 }
