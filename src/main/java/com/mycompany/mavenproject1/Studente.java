@@ -12,6 +12,7 @@ public class Studente {
    private String ID;
    private String nome;
    private String cognome;
+   private Classe classe;
 
     public Studente(String ID, String nome, String cognome) {
         this.ID = ID;
@@ -35,5 +36,11 @@ public class Studente {
     public String getCognome() {
         return cognome;
     }
+
+    public Classe getClasse() {
+        return classe;
+    }
+
+    
    
 }

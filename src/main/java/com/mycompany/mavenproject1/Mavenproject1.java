@@ -32,6 +32,18 @@ public class Mavenproject1 {
         return studentsFound;
     }
     
+    public void initializeSubjects(){
+        
+        Materia [] materie = new Materia[5];
+        
+        materie[0] = new Materia("Matematica",4);
+        materie[1] = new Materia("Matematica",3);
+        materie[2] = new Materia("GPO",3);
+        materie[3] = new Materia("Matematica",5);
+        materie[4] = new Materia("TPS",3);
+        
+    }
+    
     public void avvia(){
         
         studentsList.add( new Studente("34085","Mathis", "Tagako") );
@@ -43,7 +55,8 @@ public class Mavenproject1 {
     public static void main(String[] args) {
         
         Mavenproject1 p = new Mavenproject1();
-        p.avvia();
+        p.initializeSubjects(); //Inizializza le materie
+        p.avvia();  //Inizializza gli studenti
         InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
         n.setVisible(true);
         

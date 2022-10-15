@@ -183,7 +183,10 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
         
         ArrayList<Studente> studentsFound = new ArrayList<Studente>();
 
-        studentsFound = p.searchName(str);
+        studentsFound = p.searchName(str); //Ricerca studenti
+        
+        //Stampa studenti
+        
         if(studentsFound.size()>0){
         for(int i = 0;i<studentsFound.size();i++){
                 jTextArea1.setText(jTextArea1.getText() + studentsFound.get(i).getNome() +" "+ studentsFound.get(i).getCognome()+ "\n");
