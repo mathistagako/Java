@@ -14,15 +14,16 @@ public class Studente {
    private String cognome;
    private Classe classe;
 
-    public Studente(String ID, String nome, String cognome) {
+    public Studente(String ID, String nome, String cognome, Classe classe) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
+        this.classe = classe;
     }
 
     @Override
     public String toString() {
-        return "Studente{" + "ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + '}';
+        return "Studente{" + "ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + ", classe="+ classe.getClasse()+classe.getIndirizzo()+classe.getSezione() + '}';
     }
 
     public String getID() {

@@ -21,6 +21,11 @@ public class Voto {
         this.voto = voto;
     }
 
+    @Override
+    public String toString() {
+        return "Voto{" + "studente=" + studente.getCognome() + " " + studente.getNome() + ", materia=" + materia.getNome() + ", docente=" + docente.getCognome() + ", voto=" + voto + '}';
+    }
+
     public Studente getStudente() {
         return studente;
     }

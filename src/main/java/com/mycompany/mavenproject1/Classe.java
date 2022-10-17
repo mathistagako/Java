@@ -11,10 +11,10 @@ package com.mycompany.mavenproject1;
 public class Classe {
     
     private int classe;
-    private char sezione;
+    private String sezione;
     private String indirizzo;
 
-    public Classe(int classe, char sezione, String indirizzo) {
+    public Classe(int classe, String sezione, String indirizzo) {
         this.classe = classe;
         this.sezione = sezione;
         this.indirizzo = indirizzo;
@@ -24,7 +24,7 @@ public class Classe {
         return classe;
     }
 
-    public char getSezione() {
+    public String getSezione() {
         return sezione;
     }
 
