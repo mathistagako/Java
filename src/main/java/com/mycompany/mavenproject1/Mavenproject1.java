@@ -13,10 +13,6 @@ import java.util.ArrayList;
 public class Mavenproject1 {
     
     static ArrayList<Studente> studentsList = new ArrayList<Studente>();
-    static Classe _5TELA;
-    static Materia TPS;
-    static Docente Drusin;
-    static Voto votoTPS1;
     
     public ArrayList<Studente> searchName(String input){
         
@@ -38,17 +34,18 @@ public class Mavenproject1 {
     
     public void initializeObjects(){
         
-        _5TELA = new Classe(5,"A","TEL");
-        TPS = new Materia("TPS",3);
-        Drusin = new Docente("001","Lorenzo","Drusin",TPS);
+        Classe _5TELA = new Classe(5,"A","TEL");
+        Materia TPS = new Materia("TPS",3);
+        Docente Drusin = new Docente("001","Lorenzo","Drusin",TPS);
         
         studentsList.add( new Studente("34085","Mathis", "Tagako",_5TELA) );
         studentsList.add( new Studente("34010","Carlo", "Macinati",_5TELA) );
         studentsList.add( new Studente("34056","Joel", "Embiid",_5TELA) );
         studentsList.add( new Studente("34000","Carlo", "Devastati",_5TELA) );
         
-        votoTPS1 = new Voto(studentsList.get(0),TPS,Drusin,8);
+        Voto votoTPS1 = new Voto(studentsList.get(0),TPS,Drusin,8);
         
+        System.out.println(votoTPS1.toString());
 //        Materia [] Lunedi = new Materia[5];
 //        
 //        Lunedi[0] = new Materia("Matematica",4);
@@ -73,7 +70,6 @@ public class Mavenproject1 {
         
         Mavenproject1 p = new Mavenproject1();
         p.initializeObjects(); //Inizializza oggetti
-        System.out.println(votoTPS1.toString());
         //System.out.println(studentsList.get(0).toString()); Stampa studente specifico
         //InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
         //n.setVisible(true);
