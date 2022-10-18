@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.mavenproject1;
-
+import java.lang.reflect.Field;
 /**
  *
  * @author mathis
@@ -25,5 +25,14 @@ public class Materia {
     public int getOreSettimanali() {
         return oreSettimanali;
     }
+    
+    public boolean checkMatch(String keyword) throws IllegalAccessException {
+    for(Field field: this.getClass().getDeclaredFields()){
+        String value = (String) field.get(this);
+        if(value.equalsIgnoreCase(keyword))
+            return true;
+    }
+   return false;
+}
     
 }

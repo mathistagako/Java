@@ -180,20 +180,32 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTextArea1.setText("");
         String str = jTextField1.getText();
+        boolean resultsFound = false;
         
-        ArrayList<Studente> studentsFound = new ArrayList<Studente>();
+        //RICERCA E STAMPA STUDENTI
+        
+//        ArrayList<Studente> studentsFound = new ArrayList<Studente>();
+//
+//        studentsFound = p.searchName(str); 
+//        
+//        
+//        if(studentsFound.size()>0){
+//        for(int i = 0;i<studentsFound.size();i++){
+//                jTextArea1.setText(jTextArea1.getText() + studentsFound.get(i).getNome() +" "+ studentsFound.get(i).getCognome()+ "\n");
+//           }
+//        }else{
+//            jTextArea1.setText("Studente non trovato");
+//        }
 
-        studentsFound = p.searchName(str); //Ricerca studenti
+        //RICERCA E STAMPA GENERALE
         
-        //Stampa studenti
-        
-        if(studentsFound.size()>0){
-        for(int i = 0;i<studentsFound.size();i++){
-                jTextArea1.setText(jTextArea1.getText() + studentsFound.get(i).getNome() +" "+ studentsFound.get(i).getCognome()+ "\n");
-           }
-        }else{
-            jTextArea1.setText("Studente non trovato");
+        try{
+        resultsFound = p.generalSearch(str); 
+        jTextArea1.setText(String.valueOf(resultsFound));
+        } catch (IllegalAccessException e) {
+           jTextArea1.setText("Non è andato un tubo");
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
