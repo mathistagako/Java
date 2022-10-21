@@ -18,6 +18,60 @@ public class Mavenproject1 {
     static ArrayList<Materia> subjectsList = new ArrayList<Materia>();
     static ArrayList<Voto> gradesList = new ArrayList<Voto>();
     
+    //FUNZIONI ASSEGNAZIONE 
+    
+    public Studente findStudent(String studentCode){
+            // Goes through the List of students.
+            for (Studente i : studentsList)
+            {
+                if (i.getID().equals(studentCode))
+                {
+                    return i;   
+                }   
+            }
+            return null;
+    }
+    
+    public Docente findTeacher(String teacherCode){
+        
+        for (Docente i : teachersList)
+            {
+                if (i.getID().equals(teacherCode))
+                {
+                    return i;   
+                }
+            }
+        return null;
+    }
+    
+    public Classe findClass(String classCode){
+        
+        for (Classe i : classesList)
+            {
+                if (i.getSezione().equals(classCode))
+                {
+                    return i;   
+                }
+            }
+        return null;
+    }
+    
+    public Materia findSubject(String subjectCode){
+        
+        for (Materia i : subjectsList)
+            {
+                if (i.getNome().equals(subjectCode))
+                {
+                    return i;   
+                }
+            }
+        return null;
+    }
+    
+    //FINE ASSEGNAZIONI
+    
+    //RICERCA
+    
     public ArrayList<Studente> searchName(String input){
         
         Boolean studentFound = false;
@@ -36,44 +90,37 @@ public class Mavenproject1 {
         return studentsFound;
     }
     
-//    public getObject(String targetName){
-//        
-//    }
     
-    public Boolean generalSearch(String input) throws IllegalAccessException {
+    
+    public void generalSearch(String input) throws IllegalAccessException {
         
-        Boolean resultsFound = false;
+        System.out.println("Va la funzione");
         
         for(int i=0;i<studentsList.size();i++){
             if(studentsList.get(i).checkMatch(input)){
-                resultsFound = true;
+                System.out.println(studentsList.get(i).toString());
             }
         }
         for(int i=0;i<teachersList.size();i++){
             if(teachersList.get(i).checkMatch(input)){
-                resultsFound = true;
+                System.out.println(teachersList.get(i).toString());
             }
         }
         for(int i=0;i<classesList.size();i++){
             if(classesList.get(i).checkMatch(input)){
-                resultsFound = true;
+                System.out.println(classesList.get(i).toString());
             }
         }
         for(int i=0;i<subjectsList.size();i++){
             if(subjectsList.get(i).checkMatch(input)){
-                resultsFound = true;
+                System.out.println(subjectsList.get(i).toString());
             }
         }
         for(int i=0;i<gradesList.size();i++){
             if(gradesList.get(i).checkMatch(input)){
-                resultsFound = true;
+                System.out.println(gradesList.get(i).toString());
             }
         }
-        if(!resultsFound){
-            System.out.println("Nessun risultato trovato");
-        }
-        
-        return resultsFound;
     }
     
     public void initializeObjects(){
@@ -89,7 +136,7 @@ public class Mavenproject1 {
         
         Voto votoTPS1 = new Voto(studentsList.get(0),subjectsList.get(0),teachersList.get(0),8);
         
-        System.out.println(votoTPS1.toString());
+//        System.out.println(votoTPS1.toString());
 //        Materia [] Lunedi = new Materia[5];
 //        
 //        Lunedi[0] = new Materia("Matematica",4);
@@ -118,7 +165,7 @@ public class Mavenproject1 {
         
         //PROVA 
         try{
-        boolean result = p.generalSearch("Mathis");
+        p.generalSearch("TPS");
         } catch (IllegalAccessException e) {
            System.out.println("Non è andato un tubo");
         }
