@@ -13,9 +13,9 @@ public class Studente {
    private String ID;
    private String nome;
    private String cognome;
-   private Classe classe;
+   private String classe;
 
-    public Studente(String ID, String nome, String cognome, Classe classe) {
+    public Studente(String ID, String nome, String cognome, String classe) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
@@ -24,7 +24,7 @@ public class Studente {
 
     @Override
     public String toString() {
-        return "Studente{" + "ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + ", classe="+ classe.getClasse()+classe.getIndirizzo()+classe.getSezione() + '}';
+        return "Studente{" + "ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + ", classe="+ classe + '}';
     }
 
     public String getID() {
@@ -39,7 +39,7 @@ public class Studente {
         return cognome;
     }
 
-    public Classe getClasse() {
+    public String getClasse() {
         return classe;
     }
 

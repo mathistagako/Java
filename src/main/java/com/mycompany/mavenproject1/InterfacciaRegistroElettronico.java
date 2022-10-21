@@ -200,10 +200,9 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
         //RICERCA E STAMPA GENERALE
         
         try{
-        p.generalSearch(str); 
-        jTextArea1.setText(String.valueOf(resultsFound));
+        p.generalSearch(str);
         } catch (IllegalAccessException e) {
-           jTextArea1.setText("Non è andato un tubo");
+           System.out.println("Non funziona");
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

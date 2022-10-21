@@ -14,7 +14,6 @@ public class Mavenproject1 {
     
     static ArrayList<Studente> studentsList = new ArrayList<Studente>();
     static ArrayList<Docente> teachersList = new ArrayList<Docente>();
-    static ArrayList<Classe> classesList = new ArrayList<Classe>();
     static ArrayList<Materia> subjectsList = new ArrayList<Materia>();
     static ArrayList<Voto> gradesList = new ArrayList<Voto>();
     
@@ -37,18 +36,6 @@ public class Mavenproject1 {
         for (Docente i : teachersList)
             {
                 if (i.getID().equals(teacherCode))
-                {
-                    return i;   
-                }
-            }
-        return null;
-    }
-    
-    public Classe findClass(String classCode){
-        
-        for (Classe i : classesList)
-            {
-                if (i.getSezione().equals(classCode))
                 {
                     return i;   
                 }
@@ -94,8 +81,6 @@ public class Mavenproject1 {
     
     public void generalSearch(String input) throws IllegalAccessException {
         
-        System.out.println("Va la funzione");
-        
         for(int i=0;i<studentsList.size();i++){
             if(studentsList.get(i).checkMatch(input)){
                 System.out.println(studentsList.get(i).toString());
@@ -106,35 +91,24 @@ public class Mavenproject1 {
                 System.out.println(teachersList.get(i).toString());
             }
         }
-        for(int i=0;i<classesList.size();i++){
-            if(classesList.get(i).checkMatch(input)){
-                System.out.println(classesList.get(i).toString());
-            }
-        }
         for(int i=0;i<subjectsList.size();i++){
             if(subjectsList.get(i).checkMatch(input)){
                 System.out.println(subjectsList.get(i).toString());
-            }
-        }
-        for(int i=0;i<gradesList.size();i++){
-            if(gradesList.get(i).checkMatch(input)){
-                System.out.println(gradesList.get(i).toString());
             }
         }
     }
     
     public void initializeObjects(){
         
-        classesList.add(new Classe(5,"A","TEL"));
-        subjectsList.add(new Materia("TPS",3));
-        teachersList.add(new Docente("001","Lorenzo","Drusin",subjectsList.get(0)));
+        subjectsList.add(new Materia("TPS","3"));
+        teachersList.add(new Docente("001","Lorenzo","Drusin",findSubject("TPS").getNome()));
         
-        studentsList.add( new Studente("34085","Mathis", "Tagako",classesList.get(0)) );
-        studentsList.add( new Studente("34010","Carlo", "Macinati",classesList.get(0)) );
-        studentsList.add( new Studente("34056","Joel", "Embiid",classesList.get(0)) );
-        studentsList.add( new Studente("34000","Carlo", "Devastati",classesList.get(0)) );
+        studentsList.add( new Studente("34085","Mathis", "Tagako","5TELA") );
+        studentsList.add( new Studente("34010","Carlo", "Macinati","5TELA") );
+        studentsList.add( new Studente("34056","Joel", "Embiid","5TELA") );
+        studentsList.add( new Studente("34000","Carlo", "Devastati","5TELA") );
         
-        Voto votoTPS1 = new Voto(studentsList.get(0),subjectsList.get(0),teachersList.get(0),8);
+        Voto votoTPS1 = new Voto(findStudent("34085"),findSubject("TPS"),findTeacher("001"),8);
         
 //        System.out.println(votoTPS1.toString());
 //        Materia [] Lunedi = new Materia[5];
@@ -163,15 +137,16 @@ public class Mavenproject1 {
         p.initializeObjects(); //Inizializza oggetti
         //System.out.println(studentsList.get(0).toString()); Stampa studente specifico
         
-        //PROVA 
-        try{
-        p.generalSearch("TPS");
-        } catch (IllegalAccessException e) {
-           System.out.println("Non è andato un tubo");
-        }
+        //PROVA
         
-        //InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
-        //n.setVisible(true);
+//        try{
+//        p.generalSearch("5TELA");
+//        } catch (IllegalAccessException e) {
+//           System.out.println("Non è andato un tubo");
+//        }
+        
+        InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
+        n.setVisible(true);
         
     }
 }

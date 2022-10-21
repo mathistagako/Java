@@ -12,9 +12,9 @@ public class Docente {
     private String ID;
     private String nome;
     private String cognome;
-    private Materia materia;
+    private String materia;
 
-    public Docente(String ID, String nome, String cognome, Materia materia) {
+    public Docente(String ID, String nome, String cognome, String materia) {
         this.ID = ID;
         this.nome = nome;
         this.cognome = cognome;
@@ -33,7 +33,7 @@ public class Docente {
         return cognome;
     }
 
-    public Materia getMateria() {
+    public String getMateria() {
         return materia;
     }
 

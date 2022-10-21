@@ -11,18 +11,25 @@ import java.lang.reflect.Field;
 public class Materia {
     
     private String nome;
-    private int oreSettimanali;
+    private String oreSettimanali;
 
-    public Materia(String nome, int oreSettimanali) {
+    public Materia(String nome, String oreSettimanali) {
         this.nome = nome;
         this.oreSettimanali = oreSettimanali;
     }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "nome=" + nome + ", oreSettimanali=" + oreSettimanali + '}';
+    }
+    
+    
 
     public String getNome() {
         return nome;
     }
 
-    public int getOreSettimanali() {
+    public String getOreSettimanali() {
         return oreSettimanali;
     }
     
