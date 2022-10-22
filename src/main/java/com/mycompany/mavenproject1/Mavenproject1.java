@@ -47,7 +47,7 @@ public class Mavenproject1 {
         
         for (Materia i : subjectsList)
             {
-                if (i.getNome().equals(subjectCode))
+                if (i.getID().equals(subjectCode))
                 {
                     return i;   
                 }
@@ -79,36 +79,50 @@ public class Mavenproject1 {
     
     
     
-    public void generalSearch(String input) throws IllegalAccessException {
+    public ArrayList<String> generalSearch(String input) throws IllegalAccessException {
+        
+        ArrayList<String> objects = new ArrayList<String>();  
         
         for(int i=0;i<studentsList.size();i++){
             if(studentsList.get(i).checkMatch(input)){
                 System.out.println(studentsList.get(i).toString());
+                objects.add(studentsList.get(i).getID());
             }
         }
         for(int i=0;i<teachersList.size();i++){
             if(teachersList.get(i).checkMatch(input)){
                 System.out.println(teachersList.get(i).toString());
+                objects.add(teachersList.get(i).getID());
             }
         }
         for(int i=0;i<subjectsList.size();i++){
             if(subjectsList.get(i).checkMatch(input)){
                 System.out.println(subjectsList.get(i).toString());
+                objects.add(subjectsList.get(i).getID());
             }
         }
+        
+        return objects;
     }
     
     public void initializeObjects(){
         
-        subjectsList.add(new Materia("TPS","3"));
-        teachersList.add(new Docente("001","Lorenzo","Drusin",findSubject("TPS").getNome()));
+        subjectsList.add(new Materia("01","TPS","3"));
+        subjectsList.add(new Materia("02","SeR","3"));
+        subjectsList.add(new Materia("03","Telecomunicazioni","5"));
+        subjectsList.add(new Materia("04","GPO","3"));
+        
+        teachersList.add(new Docente("001","Lorenzo","Drusin",findSubject("01").getNome()));
+        teachersList.add(new Docente("002","Armando","Solfrizzo",findSubject("03").getNome()));
+        teachersList.add(new Docente("003","Giovanni","Codognato",findSubject("02").getNome()));
+        teachersList.add(new Docente("004","David","Palma",findSubject("04").getNome()));
         
         studentsList.add( new Studente("34085","Mathis", "Tagako","5TELA") );
         studentsList.add( new Studente("34010","Carlo", "Macinati","5TELA") );
         studentsList.add( new Studente("34056","Joel", "Embiid","5TELA") );
         studentsList.add( new Studente("34000","Carlo", "Devastati","5TELA") );
         
-        Voto votoTPS1 = new Voto(findStudent("34085"),findSubject("TPS"),findTeacher("001"),8);
+        Voto votoTPS1 = new Voto(findStudent("34085"),findSubject("01"),findTeacher("001"),8);
         
 //        System.out.println(votoTPS1.toString());
 //        Materia [] Lunedi = new Materia[5];
@@ -136,14 +150,6 @@ public class Mavenproject1 {
         Mavenproject1 p = new Mavenproject1();
         p.initializeObjects(); //Inizializza oggetti
         //System.out.println(studentsList.get(0).toString()); Stampa studente specifico
-        
-        //PROVA
-        
-//        try{
-//        p.generalSearch("5TELA");
-//        } catch (IllegalAccessException e) {
-//           System.out.println("Non è andato un tubo");
-//        }
         
         InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
         n.setVisible(true);
