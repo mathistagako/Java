@@ -10,20 +10,24 @@ import java.lang.reflect.Field;
  */
 public class Materia {
     
+    private String ID;
     private String nome;
     private String oreSettimanali;
 
-    public Materia(String nome, String oreSettimanali) {
+    public Materia(String ID, String nome, String oreSettimanali) {
+        this.ID = ID;
         this.nome = nome;
         this.oreSettimanali = oreSettimanali;
     }
 
     @Override
     public String toString() {
-        return "Materia{" + "nome=" + nome + ", oreSettimanali=" + oreSettimanali + '}';
+        return "Materia{" + "ID="+ ID + "nome=" + nome + ", oreSettimanali=" + oreSettimanali + '}';
     }
-    
-    
+
+    public String getID() {
+        return ID;
+    }
 
     public String getNome() {
         return nome;
