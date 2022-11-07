@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
  *
  * @author mathis
  */
-public class Docente {
+public class Docente implements RicercaGenerale{
     private String ID;
     private String nome;
     private String cognome;
@@ -40,6 +40,27 @@ public class Docente {
     @Override
     public String toString() {
         return "Docente{" + "ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + ", materia=" + materia + '}';
+    }
+    
+    @Override
+    public String ricerca(String p) {
+        
+        String risultato = "";
+        
+        if(ID.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + cognome + " " + materia + "\n");
+        }
+        if(nome.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + cognome + " " + materia + "\n");
+        }
+        if(cognome.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + cognome + " " + materia + "\n");
+        }
+        if(materia.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + cognome + " " + materia + "\n");
+        }
+        
+        return risultato;
     }
     
     public boolean checkMatch(String keyword) throws IllegalAccessException {

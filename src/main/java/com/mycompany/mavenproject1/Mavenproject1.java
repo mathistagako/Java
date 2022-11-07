@@ -77,7 +77,29 @@ public class Mavenproject1 {
         return studentsFound;
     }
     
+    //RICERCA GENERALE INTERFACCIA
     
+    public String ricercaGenerale(String val){
+        
+        String risultato = "";
+        
+        for(Studente s: studentsList){
+                risultato = (risultato + s.ricerca(val));
+        }
+        
+        for(Docente d: teachersList){
+            risultato = (risultato + d.ricerca(val));
+        }
+        
+        for(Materia m: subjectsList){
+            risultato = (risultato + m.ricerca(val));
+        }
+        
+        return risultato;
+        
+    }
+    
+    //RICERCA GENERALE AVANZATO
     
     public ArrayList<String> generalSearch(String input) throws IllegalAccessException {
         
@@ -89,12 +111,14 @@ public class Mavenproject1 {
                 objects.add(studentsList.get(i).getID());
             }
         }
+        
         for(int i=0;i<teachersList.size();i++){
             if(teachersList.get(i).checkMatch(input)){
                 System.out.println(teachersList.get(i).toString());
                 objects.add(teachersList.get(i).getID());
             }
         }
+        
         for(int i=0;i<subjectsList.size();i++){
             if(subjectsList.get(i).checkMatch(input)){
                 System.out.println(subjectsList.get(i).toString());

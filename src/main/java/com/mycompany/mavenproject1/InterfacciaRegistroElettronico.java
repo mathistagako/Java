@@ -182,6 +182,7 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
         String str = jTextField1.getText();
         ArrayList<String> objectsFound;
         
+        
         //RICERCA E STAMPA STUDENTI
         
 //        ArrayList<Studente> studentsFound = new ArrayList<Studente>();
@@ -197,31 +198,37 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
 //            jTextArea1.setText("Studente non trovato");
 //        }
 
-        //RICERCA E STAMPA GENERALE
+        //RICERCA GENERALE INTERFACCIA
         
-        try{
-            objectsFound = p.generalSearch(str);
-            if(!objectsFound.isEmpty()){
-               for(String i : objectsFound){
-                   Studente resultStudent = p.findStudent(i);
-                   Docente resultTeacher = p.findTeacher(i);
-                   Materia resultSubject = p.findSubject(i);
-                   if(resultStudent!=null){
-                      jTextArea1.setText(jTextArea1.getText() + resultStudent.getID() +" "+ resultStudent.getNome() +" "+ resultStudent.getCognome() + "\n");
-                   }else if(resultTeacher!=null){
-                      jTextArea1.setText(jTextArea1.getText() + resultTeacher.getID() +" "+ resultTeacher.getNome() +" "+ resultTeacher.getCognome()+" "+ resultTeacher.getMateria()  + "\n"); 
-                   }else if(resultSubject!=null){
-                       jTextArea1.setText(jTextArea1.getText() + resultSubject.getID() +" "+ resultSubject.getNome() +" "+ resultSubject.getOreSettimanali()+" ore settimanali"+ "\n");
-                   }else{
-                       jTextArea1.setText(jTextArea1.getText() + "Qua qualcosa non quadra" + "\n");
-                   }
-               }  
-            }else{
-                jTextArea1.setText("Nessun risultato");
-            }
-        } catch (IllegalAccessException e) {
-           System.out.println("Non funziona");
-        }
+        String risultatoRicercaGenerale = p.ricercaGenerale(str);
+        
+        jTextArea1.setText(risultatoRicercaGenerale);
+
+        //RICERCA E STAMPA GENERALE AVANZATO
+        
+//        try{
+//            objectsFound = p.generalSearch(str);
+//            if(!objectsFound.isEmpty()){
+//               for(String i : objectsFound){
+//                   Studente resultStudent = p.findStudent(i);
+//                   Docente resultTeacher = p.findTeacher(i);
+//                   Materia resultSubject = p.findSubject(i);
+//                   if(resultStudent!=null){
+//                      jTextArea1.setText(jTextArea1.getText() + resultStudent.getID() +" "+ resultStudent.getNome() +" "+ resultStudent.getCognome() + "\n");
+//                   }else if(resultTeacher!=null){
+//                      jTextArea1.setText(jTextArea1.getText() + resultTeacher.getID() +" "+ resultTeacher.getNome() +" "+ resultTeacher.getCognome()+" "+ resultTeacher.getMateria()  + "\n"); 
+//                   }else if(resultSubject!=null){
+//                       jTextArea1.setText(jTextArea1.getText() + resultSubject.getID() +" "+ resultSubject.getNome() +" "+ resultSubject.getOreSettimanali()+" ore settimanali"+ "\n");
+//                   }else{
+//                       jTextArea1.setText(jTextArea1.getText() + "Qua qualcosa non quadra" + "\n");
+//                   }
+//               }  
+//            }else{
+//                jTextArea1.setText("Nessun risultato");
+//            }
+//        } catch (IllegalAccessException e) {
+//           System.out.println("Non funziona");
+//        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

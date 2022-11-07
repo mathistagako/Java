@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
  *
  * @author mathis
  */
-public class Materia {
+public class Materia implements RicercaGenerale{
     
     private String ID;
     private String nome;
@@ -36,6 +36,29 @@ public class Materia {
     public String getOreSettimanali() {
         return oreSettimanali;
     }
+    
+    //METODO RICERCA GENERALE INTERFACCIA
+    
+    @Override
+    public String ricerca(String p) {
+        
+        String risultato = "";
+        
+        if(ID.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + oreSettimanali +"\n");
+        }
+        if(nome.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + oreSettimanali +"\n");
+        }
+        if(oreSettimanali.equalsIgnoreCase(p)){
+            risultato = (ID + " " + nome + " " + oreSettimanali +"\n");
+        }
+        
+        return risultato;
+    }
+    
+    
+    //METODO RICERCA GENERALE AVANZATO
     
     public boolean checkMatch(String keyword) throws IllegalAccessException {
     for(Field field: this.getClass().getDeclaredFields()){
