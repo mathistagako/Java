@@ -9,12 +9,14 @@ import java.lang.reflect.Field;
  * @author mathis
  */
 public class Voto {
+    private String ID;
     private Studente studente;
     private Materia materia;
     private Docente docente;
     private int voto;
 
-    public Voto(Studente studente, Materia materia, Docente docente, int voto) {
+    public Voto(String ID,Studente studente, Materia materia, Docente docente, int voto) {
+        this.ID = ID;
         this.studente = studente;
         this.materia = materia;
         this.docente = docente;

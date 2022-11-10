@@ -4,7 +4,13 @@
  */
 
 package com.mycompany.mavenproject1;
+import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager; 
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+
 
 /**
  *
@@ -131,22 +137,40 @@ public class Mavenproject1 {
     
     public void initializeObjects(){
         
+    //DATABASE CONNECTION
+    try{
+        String url = "jdbc:mysql://localhost:3306/registro_elettronico";
+        String user = "root";
+        String password = "root";
+        int i = 0;
+ 
+        Connection connection = DriverManager.getConnection(url, user, password);
+        Statement st = connection.createStatement(); 
+        ResultSet rs = st.executeQuery("SELECT * from studenti;");
+        
+        
+        while (rs.next())
+      {
+        studentsList.add( new Studente(rs.getString("ID"),rs.getString("nome"),rs.getString("cognome"),rs.getString("classe")) );
+        System.out.println(studentsList.get(i).toString());
+        i++;
+      }
+      st.close();
+    }
+    catch (Exception e) {  
+        System.out.println(e.toString());  
+    }  
+    
         subjectsList.add(new Materia("01","TPS","3"));
         subjectsList.add(new Materia("02","SeR","3"));
         subjectsList.add(new Materia("03","Telecomunicazioni","5"));
         subjectsList.add(new Materia("04","GPO","3"));
         
-        teachersList.add(new Docente("001","Lorenzo","Drusin",findSubject("01").getNome()));
-        teachersList.add(new Docente("002","Armando","Solfrizzo",findSubject("03").getNome()));
-        teachersList.add(new Docente("003","Giovanni","Codognato",findSubject("02").getNome()));
-        teachersList.add(new Docente("004","David","Palma",findSubject("04").getNome()));
+        teachersList.add(new Docente("00001","Lorenzo","Drusin",findSubject("01").getNome()));
+        teachersList.add(new Docente("00002","Armando","Solfrizzo",findSubject("03").getNome()));
+        teachersList.add(new Docente("00003","Giovanni","Codognato",findSubject("02").getNome()));
+        teachersList.add(new Docente("00004","David","Palma",findSubject("04").getNome()));
         
-        studentsList.add( new Studente("34085","Mathis", "Tagako","5TELA") );
-        studentsList.add( new Studente("34010","Carlo", "Macinati","5TELA") );
-        studentsList.add( new Studente("34056","Joel", "Embiid","5TELA") );
-        studentsList.add( new Studente("34000","Carlo", "Devastati","5TELA") );
-        
-        Voto votoTPS1 = new Voto(findStudent("34085"),findSubject("01"),findTeacher("001"),8);
         
 //        System.out.println(votoTPS1.toString());
 //        Materia [] Lunedi = new Materia[5];
@@ -176,7 +200,7 @@ public class Mavenproject1 {
         //System.out.println(studentsList.get(0).toString()); Stampa studente specifico
         
         InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
-        n.setVisible(true);
+        //n.setVisible(true);
         
     }
 }
