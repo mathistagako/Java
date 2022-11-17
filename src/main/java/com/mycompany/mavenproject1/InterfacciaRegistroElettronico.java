@@ -202,7 +202,11 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
         
         String risultatoRicercaGenerale = p.ricercaGenerale(str);
         
+        if(!risultatoRicercaGenerale.isEmpty()){
         jTextArea1.setText(risultatoRicercaGenerale);
+        }else{
+            jTextArea1.setText("Nessun risultato");
+        }
 
         //RICERCA E STAMPA GENERALE AVANZATO
         

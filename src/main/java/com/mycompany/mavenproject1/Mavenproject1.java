@@ -138,38 +138,46 @@ public class Mavenproject1 {
     public void initializeObjects(){
         
     //DATABASE CONNECTION
+    
+    String url = "jdbc:mysql://localhost:3306/registro_elettronico";
+    String user = "java";
+    String password = "java";
+    String queries[] = {"select * from studenti","select * from docenti","select * from materie"} ;
+    
+    
     try{
-        String url = "jdbc:mysql://localhost:3306/registro_elettronico";
-        String user = "root";
-        String password = "root";
-        int i = 0;
  
         Connection connection = DriverManager.getConnection(url, user, password);
         Statement st = connection.createStatement(); 
-        ResultSet rs = st.executeQuery("SELECT * from studenti;");
         
         
-        while (rs.next())
-      {
-        studentsList.add( new Studente(rs.getString("ID"),rs.getString("nome"),rs.getString("cognome"),rs.getString("classe")) );
-        System.out.println(studentsList.get(i).toString());
-        i++;
-      }
-      st.close();
+        try {
+            for (String q : queries) { 
+              ResultSet rset = st.executeQuery(q);
+              try {
+                while(rset.next()){
+                    if(q.equals("select * from studenti")){
+                        studentsList.add( new Studente(rset.getString("ID"),rset.getString("nome"),rset.getString("cognome"),rset.getString("classe")) );
+                    }
+                    if(q.equals("select * from docenti")){
+                        teachersList.add( new Docente(rset.getString("ID"),rset.getString("nome"),rset.getString("cognome"),rset.getString("materia")) );
+                    }
+                    if(q.equals("select * from materie")){
+                        subjectsList.add( new Materia(rset.getString("ID"),rset.getString("nome"),rset.getString("oreSettimanali")) );
+                    }
+                }
+              } finally {
+                rset.close();
+              }
+            }
+          } finally {
+            st.close();
+          }
     }
     catch (Exception e) {  
         System.out.println(e.toString());  
     }  
     
-        subjectsList.add(new Materia("01","TPS","3"));
-        subjectsList.add(new Materia("02","SeR","3"));
-        subjectsList.add(new Materia("03","Telecomunicazioni","5"));
-        subjectsList.add(new Materia("04","GPO","3"));
-        
-        teachersList.add(new Docente("00001","Lorenzo","Drusin",findSubject("01").getNome()));
-        teachersList.add(new Docente("00002","Armando","Solfrizzo",findSubject("03").getNome()));
-        teachersList.add(new Docente("00003","Giovanni","Codognato",findSubject("02").getNome()));
-        teachersList.add(new Docente("00004","David","Palma",findSubject("04").getNome()));
         
         
 //        System.out.println(votoTPS1.toString());
@@ -197,10 +205,9 @@ public class Mavenproject1 {
         
         Mavenproject1 p = new Mavenproject1();
         p.initializeObjects(); //Inizializza oggetti
-        //System.out.println(studentsList.get(0).toString()); Stampa studente specifico
         
         InterfacciaRegistroElettronico n = new InterfacciaRegistroElettronico(p);
-        //n.setVisible(true);
+        n.setVisible(true);
         
     }
 }
