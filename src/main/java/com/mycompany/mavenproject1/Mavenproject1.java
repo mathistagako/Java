@@ -135,7 +135,7 @@ public class Mavenproject1 {
         return objects;
     }
     
-    public void initializeObjects(){
+    private void initializeObjects(){
         
     //DATABASE CONNECTION
     

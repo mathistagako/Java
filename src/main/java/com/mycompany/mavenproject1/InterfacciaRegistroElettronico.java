@@ -68,6 +68,7 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -179,7 +180,7 @@ public class InterfacciaRegistroElettronico extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("");
-        String str = jTextField1.getText();
+        String str = jTextField1.getText().trim();
         ArrayList<String> objectsFound;
         
         
