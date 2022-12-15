@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class TimeClient {
     
-    private static String HOSTNAME = "127.0.0.1";
+    private static String HOSTNAME = "192.168.22.224";
     private static int PORT = 46868;
     
     public static void main(String[] args) {

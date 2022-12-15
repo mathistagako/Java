@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package Socket;
+package socket;
 
 import java.io.BufferedReader;
 import java.io.Console;
@@ -13,43 +13,50 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 /**
  *
- * @author 34085
+ * @author drusi
  */
 public class ClientReverseWord {
-    
-    private static final String HOST = "127.0.0.1";
+
+    private static final String HOST = "localhost";
     private static final int PORT = 46868;
-    
-    public static void main(String[] args){
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
         
-        try( Socket socket = new Socket(HOST,PORT)){
-            
-            String text;
+        try( Socket socket = new Socket(HOST, PORT)) {
             OutputStream output = socket.getOutputStream();
-            PrintWriter writer  = new PrintWriter(output, true);
+            PrintWriter writer = new PrintWriter(output, true);
             
-            Console console = System.console();
+            //Console console = System.console();
+            Scanner scanner = new Scanner(System.in); // <----
+            String text;
             
             do {
-                text = console.readLine("Enter text: ");
+                //text = console.readLine("Enter text: ");
+                System.out.print("Enter text: "); // <----
+                text = scanner.nextLine(); // <----
                 writer.println(text);
                 
-                InputStream input  = socket.getInputStream();
+                InputStream input = socket.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                 
                 String reverse = reader.readLine();
                 System.out.println(reverse);
-                
-            }while(!text.equalsIgnoreCase("bye"));
+            } while(!text.equals("bye"));
             
-        } catch(UnknownHostException ex) {
+        } catch (UnknownHostException ex) {
             System.out.println("Server not found: " + ex.getMessage());
         } catch (IOException ex ) {
-            System.out.println("I/O Error: " + ex.getMessage());
+            System.out.println("I/O error: " + ex.getMessage());
         }
+        
     }
     
 }
